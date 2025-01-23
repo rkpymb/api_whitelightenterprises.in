@@ -495,7 +495,7 @@ router.post('/sub-category-list',verifyTokens, async (req, res, next) => {
         const skip = (page - 1) * limit;
         let AllData = null
         if (page == 1) {
-            AllData = await subCategoryModel.countDocuments()
+            AllData = await subCategoryModel.countDocuments({catId:catId})
         }
 
         const ListData = await subCategoryModel.find({catId:catId}).sort({ _id: -1 }).skip(skip).limit(limit)
